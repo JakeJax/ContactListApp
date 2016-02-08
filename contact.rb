@@ -7,6 +7,8 @@ class Contact
 
   def initialize(name, email)
     # TODO: Assign parameter values to instance variables.
+    @name = name
+    @email = email
   end
 
   # Provides functionality for managing a list of Contacts in a database.
@@ -14,6 +16,12 @@ class Contact
 
     # Returns an Array of Contacts loaded from the database.
     def all
+      store_contacts = []
+      CSV.open("./contact.csv", "r") do |file|
+        file.readlines.each_with_index do |line, idx|
+          store_contacts << line
+        end
+      end
       # TODO: Return an Array of Contact instances made from the data in 'contacts.csv'.
     end
 
