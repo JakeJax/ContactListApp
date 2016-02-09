@@ -46,6 +46,17 @@ class Contact
     # Returns an array of contacts who match the given term.
     def search(term)
       # TODO: Select the Contact instances from the 'contacts.csv' file whose name or email attributes contain the search term.
+      search_results = []
+      CSV.open("./contact.csv", "r") do |contact|
+        contact.readlines.each_with_index do |line, idx|
+          line.each do |words_in_list|
+            if /#{words_in_list}/.match(term)
+              search_results << line
+            end
+          end
+        end
+      end
+      search_results
     end
 
   end

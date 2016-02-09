@@ -29,6 +29,10 @@ class ContactList
       puts "Enter ID:"
       id = gets.chomp.to_i
       puts Contact.find(id)
+    when "search"
+      puts "Enter a keyword"
+      term = gets.chomp
+      puts Contact.search(term)
     end
   end
 end
