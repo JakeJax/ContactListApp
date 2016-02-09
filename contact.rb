@@ -28,6 +28,11 @@ class Contact
     # Creates a new contact, adding it to the database, returning the new contact.
     def create(name, email)
       # TODO: Instantiate a Contact, add its data to the 'contacts.csv' file, and return it.
+      new_entry = Contact.new(name, email)
+      CSV.open("./contact.csv", "a") do |csv|
+        csv << [name, email]
+      end
+      new_entry
     end
 
     # Returns the contact with the specified id. If no contact has the id, returns nil.

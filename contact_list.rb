@@ -19,6 +19,12 @@ class ContactList
     case choice
     when "list"
       puts Contact.all
+    when "new"
+      puts "Enter Name:"
+      new_name = gets.chomp
+      puts "Enter Email"
+      new_email = gets.chomp
+      puts Contact.create(new_name, new_email)
     end
   end
 end
