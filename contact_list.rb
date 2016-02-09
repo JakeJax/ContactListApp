@@ -25,6 +25,10 @@ class ContactList
       puts "Enter Email"
       new_email = gets.chomp
       puts Contact.create(new_name, new_email)
+    when "show"
+      puts "Enter ID:"
+      id = gets.chomp.to_i
+      puts Contact.find(id)
     end
   end
 end
